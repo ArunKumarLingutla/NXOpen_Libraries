@@ -23,9 +23,10 @@
 #include <NXOpen/Callback.hxx>
 #include <NXOpen/BlockStyler_BlockDialog.hxx>
 #include <NXOpen/CustomPopupMenuHandler.hxx>
-#include <NXOpen/Gateway_ImageExportBuilder.hxx>
 #include <NXOpen/TaggedObject.hxx>
 #include <NXOpen/libnxopenuicpp_exports.hxx>
+
+ #undef CreateDialog
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -43,10 +44,6 @@ namespace NXOpen
         class BlockDialog;
     }
     class CustomPopupMenuHandler;
-    namespace Gateway
-    {
-        class ImageExportBuilder;
-    }
     namespace MenuBar
     {
         class MenuBarManager;
@@ -175,8 +172,8 @@ namespace NXOpen
         );
         /** Query NX lock status.
             This function is useful when dismissing a custom dialog and you want
-            to determine whether or not a lock has been set. Returns @link NXOpen::UI::StatusLock NXOpen::UI::StatusLock@endlink , 
-            when NX is in lock status. Returns @link NXOpen::UI::StatusUnlock NXOpen::UI::StatusUnlock@endlink , 
+            to determine whether or not a lock has been set. Returns @link  UI::StatusLock   UI::StatusLock @endlink , 
+            when NX is in lock status. Returns @link  UI::StatusUnlock   UI::StatusUnlock @endlink , 
             when NX is in unlock status.
              @return  
          <br>  Created in NX5.0.0.  <br>  
@@ -218,12 +215,6 @@ namespace NXOpen
          <br>  Created in NX6.0.4.  <br>  
          <br> License requirements : None */
         public: NXOpen::CustomPopupMenuHandler * CreateCustomPopupMenuHandler
-        (
-        );
-        /** Creates a @link NXOpen::Gateway::ImageExportBuilder NXOpen::Gateway::ImageExportBuilder@endlink   @return  
-         <br>  Created in NX12.0.1.  <br>  
-         <br> License requirements : None */
-        public: NXOpen::Gateway::ImageExportBuilder * CreateImageExportBuilder
         (
         );
         /** Returns a flag indicating whether the NX user interface is in a state
@@ -270,7 +261,7 @@ namespace NXOpen
          <br>  Created in NX3.0.0.  <br>  
         */
         public: NXOpen::Preferences::SessionVisualizationShade *VisualizationShadingPreferences();
-        /** Returns the @link NXOpen::MenuBar::MenuBarManager NXOpen::MenuBar::MenuBarManager@endlink  belonging to the current session 
+        /** Returns the @link MenuBar::MenuBarManager MenuBar::MenuBarManager@endlink  belonging to the current session 
          <br>  Created in NX3.0.0.  <br>  
         */
         public: NXOpen::MenuBar::MenuBarManager *MenuBarManager();
